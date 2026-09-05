@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Hanken Grotesk", Arial, sans-serif;
+    background-color: #262626;
+    color: #D9D9D9;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    width: 100%;
+    max-width: 700px;
+}
+
+main > .header > h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #F9F4DA;
+}
+
+main > .header > p {
+    margin-inline: auto;
+    text-align: center;;
+    font-size: 0.8rem;
+    color: #8E8E8E;
+    max-width: 350px;
+}
+
+main > .status {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid #8E8E8E;
+    padding: 10px 30px;
+    border-radius: 8px;
+    background-color: green;
+    color: #F9F4DA;
+    margin-block: 30px;
+}
+
+main > .status > h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #F9F4DA;
+}
+
+main > section > p {
+    margin: 0;
+    font-size: 0.875rem;;
+}
+
+.languages-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 700px;
+}
+
+.languages-list > .chip {
+    padding: 10px 20px;
+    border: 1px solid #8E8E8E;
+    border-radius: 8px;
+}
+
+main > .word-display {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+}
+
+main > .word-display > .letter {
+   margin-top: 30px;
+   padding: 20px 40px;
+   border-bottom: 3px solid #d2d2d2;
+   border-radius: 8px;
+   max-width: 350px;
+   background-color: #787878;
+   font-size: 2rem;
+   font-weight: 700;
+}
+
+main > .keyboard-container {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 8px;
+    width: 100%;
+    margin: 30px auto 0;
+}
+
+main > .keyboard-container > .keyboard-button {
+    width: 100%;
+    height: clamp(42px, 7vw, 55px);
+    padding: 0;
+    border: 2px solid #dbdbdb;
+    border-radius: 8px;
+    background-color: #d6b200;
+    color: #000000;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 700;
+}
+
+main > .keyboard-container > .keyboard-button:hover {
+    cursor: pointer;
+    background-color: #b60095;
+    color: #d2d2d2;
+} 
+
+@media (max-width: 550px) {
+    main > .keyboard-container {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px;
+    }
+}
+
+main > footer > .new-game-button {
+    margin-top: 30px;
+    width: 100%;
+    height: clamp(42px, 7vw, 55px);
+    padding: 0;
+    border: 2px solid #787878;
+    border-radius: 8px;
+    background-color: #0597db;
+    color: #000000;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 700;
+}
