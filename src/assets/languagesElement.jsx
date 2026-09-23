@@ -1,19 +1,21 @@
 import { languages } from './languages'
+import clsx from 'clsx'
 
-const languagesElement = languages.map(language => {
+export function LanguagesElement(props) {
+  return languages.map((language, index) => {
     const styles = {
       backgroundColor: language.backgroundColor,
       color: language.color
     }
+
+    const isLost = index < props.wrongGuessCount
     return (
             <span 
-              className='chip'
-              key={language.name}
-              style={styles}
+                key={language.name} 
+                style={styles}
+                className={clsx('chip', isLost && 'lost')}
             >
               {language.name}
             </span>
           )
-})
-
-export default languagesElement
+})}

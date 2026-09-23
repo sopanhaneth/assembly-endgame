@@ -9,13 +9,12 @@ body {
     color: #D9D9D9;
     padding: 20px;
     height: 100vh;
-    display: flex;
-    justify-content: center;
 }
 
 main {
-    width: 100%;
-    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 main > .header > h1 {
@@ -33,30 +32,70 @@ main > .header > p {
     max-width: 350px;
 }
 
-main > .status {
+main > section.status h2,
+main > section.status p {
     margin: 0;
+}
+
+main > section.status {
+    width: min(500px, 100%);
+    height: 100px;
+    margin: 30px auto;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px solid #8E8E8E;
-    padding: 10px 30px;
+    padding: 15px;
     border-radius: 8px;
-    background-color: green;
     color: #F9F4DA;
-    margin-block: 30px;
 }
 
-main > .status > h2 {
+main > section.status.won {
+    background-color: green;
+    border: 2px solid #8E8E8E;
+}
+
+main > section.status.lose {
+    background-color: red;
+    border: 2px solid #8E8E8E;
+}
+
+main > section >.status.won > h2 {
     margin: 0;
     font-size: 1.5rem;
     font-weight: 700;
     color: #F9F4DA;
 }
 
-main > section > p {
+main > section.status.won > p {
     margin: 0;
     font-size: 0.875rem;;
+}
+
+main > section.status.displayFarewellMessages > h2 {
+    margin: 0;
+}
+
+main > section.status.displayFarewellMessages > h2.farewell {
+    background-color: #7A5EA7;
+    border: 1px dashed #323232;
+    font-style: italic;
+    font-weight: 400;
+    width: min(500px, 100%);
+    text-align: center;
+    padding: 15px 20px;
+}
+
+main > section.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 .languages-list {
@@ -68,9 +107,22 @@ main > section > p {
 }
 
 .languages-list > .chip {
-    padding: 10px 20px;
-    border: 1px solid #8E8E8E;
-    border-radius: 8px;
+  position: relative;
+  padding: 10px 20px;
+  border: 1px solid #8e8e8e;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.languages-list > span.chip.lost::before {
+  content: "💀";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 main > .word-display {
@@ -91,6 +143,18 @@ main > .word-display > .letter {
    background-color: #787878;
    font-size: 2rem;
    font-weight: 700;
+}
+
+main > .word-display > .missed-letter {
+   margin-top: 30px;
+   padding: 20px 40px;
+   border-bottom: 3px solid #d2d2d2;
+   border-radius: 8px;
+   max-width: 350px;
+   background-color: #800000;
+   font-size: 2rem;
+   font-weight: 700;
+   color: whitesmoke;
 }
 
 main > .keyboard-container {
@@ -115,8 +179,8 @@ main > .keyboard-container > .keyboard-button {
 
 main > .keyboard-container > .keyboard-button:hover {
     cursor: pointer;
-    background-color: #b60095;
     color: #d2d2d2;
+    background-color: #0597db;
 } 
 
 @media (max-width: 550px) {
@@ -126,10 +190,23 @@ main > .keyboard-container > .keyboard-button:hover {
     }
 }
 
-main > footer > .new-game-button {
+main > .keyboard-container > .keyboard-button.correct {
+    background-color: green;
+}
+
+main > .keyboard-container > .keyboard-button.wrong {
+    background-color: red;
+}
+
+main > .keyboard-container > .keyboard-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+main > section > .game-button {
     margin-top: 30px;
-    width: 100%;
-    height: clamp(42px, 7vw, 55px);
+    width: 350px;
+    /* clamp(MINIMUM, PREFERRED, MAXIMUM) */
+    height: clamp(42px, 7vw, 55px); 
     padding: 0;
     border: 2px solid #787878;
     border-radius: 8px;
@@ -138,3 +215,5 @@ main > footer > .new-game-button {
     font-size: clamp(1rem, 3vw, 1.5rem);
     font-weight: 700;
 }
+
+
